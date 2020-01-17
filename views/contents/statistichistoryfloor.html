@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../common/header.html %>
+    <link href="/stylesheets/management.css" rel="stylesheet">
+    <link href="/stylesheets/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <script charset="utf8" src="/vendor/jquery-plugins/jquery.dataTables.js" type="text/javascript"></script>
+    <script charset="utf8" src="/vendor/jquery-plugins/dataTables.rowsGroup.js" type="text/javascript"></script>
+</head>
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- Navigation Start -->
+<% include ../common/navigation.html %>
+<!-- Navigation End -->
+
+<div class="content-wrapper" style="padding:10px;">
+    <div class="container-fluid">
+        <div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fa fa-history"></i> Log History Floor
+                </div>
+                <div class="card-body">
+                    <form class="form-inline" id="search-form" role="form">
+                        <div class="form-group col-12">
+                            <label class="ml-2 mb-2">Zone : </label>
+                            <!-- floor selection -->
+                            <div class="ml-2 mb-2 ">
+                                <button class="btn btn-outline-success dropdown-toggle floor-toggle point-cursor"
+                                        data-toggle="dropdown"
+                                        id="floor-select-btn"
+                                        type="button"><p>Floor selection</p>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu floor-list" id="statistichistory-floor-list" role="menu"></ul>
+                            </div>
+                            <div class="dropdown ml-2 mb-2">
+                                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" type="button">
+                                    5 Minutes
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">5 Minutes</a></li>
+                                    <li><a href="#">Hourly</a></li>
+                                    <li><a href="#">Daily</a></li>
+                                    <li><a href="#">Weekly</a></li>
+                                    <li><a href="#">Monthly</a></li>
+                                    <li><a href="#">Yearly</a></li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-red2 btn-pull-right ml10 mb-2 point-cursor" id="graph-btn"
+                                    type="button">
+                                <i class="fa fa-fw fa-bar-chart"></i> Graph
+                            </button>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="ml-2 mb-2">Search period: </label>
+                            <input class="date-input form-control ml-2 mb-2" id="start-date-input" name="start_date"
+                                   readonly type="text">
+                            <button class="btn btn-gray btn-pull-right ml-2 mb-2 point-cursor" id="start-date-btn"
+                                    type="button">
+                                <i class="fa fa-fw fa-calendar"></i>
+                            </button>
+                            <span class="ml-2" id="until">~</span>
+                            <input class="date-input form-control ml-2 mb-2" id="end-date-input" name="end_date"
+                                   readonly type="text">
+                            <button class="btn btn-gray btn-pull-right ml-2 mb-2 point-cursor" id="end-date-btn"
+                                    type="button">
+                                <i class="fa fa-fw fa-calendar"></i>
+                            </button>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-red2 btn-pull-right ml10 mb-2 point-cursor" id="search-btn"
+                                    type="button">
+                                <i class="fa fa-fw fa-search"></i> Search
+                            </button>
+                            <button class="btn btn-red2 btn-pull-right ml10 mb-2 point-cursor" id="export-btn"
+                                    type="button">
+                                <i class="fa fa-fw fa-file"></i> Export to Excel
+                            </button>
+                        </div>
+                    </form>
+                    <p></p>
+                    <div class="table-responsive">
+                        <table cellspacing="0" class="table table-bordered" id="dataTable" width="100%">
+                            <thead>
+                            <tr>
+                                <th class="text-center">Zone</th>
+                                <th class="text-center">Date</th>
+                                <th class="text-center">Serial No.</th>
+                                <th class="text-center">Temp. (℃)</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="list-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer small text-muted">
+                    <strong>Total <span id='total-span'>0</span> items</strong> Updated. (<span
+                        id="updated-time-span"></span>)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../common/footer.html %>
+    <% include ../common/etc.html %>
+</div>
+
+<script src="/js/contents/statistichistoryfloor.js"></script>
+<script src="/vendor/chart.js/Chart.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+/*
+(max-width: 640px)
+(min-width: 641px) and (max-width: 800px)
+(min-width: 801px) and (max-width: 1024px)
+(min-width: 1025px)
+*/
+@media only screen and (max-width: 395px) {
+  /* Styles */
+.card > .box > .content > .row{
+  margin-left:2em !important;
+}
+.card > .box > .content > .row > .box-col > .env-btn{ 
+  display: inline-block; 
+  margin-right:4px;
+}
+.card > .box > .content > .row > .box-col > .env-btn:last-child{
+  margin-bottom:4px !important;
+}
+
+.card > .box > .content > .row > .box-col > .env-div > .env-cel{
+  width:122px !important;
+  max-width: 122px !important;
+}
+
+}
+
+@media only screen and (max-width: 640px) {
+  /* Styles */
+  .card-box-media {
+    text-align: center;
+    min-width: 356px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 641px) {
+  /* Styles */
+  .card-box-media {
+    text-align: center;
+    min-width: 356px;
+    margin-left: 1rem;
+  }
+}

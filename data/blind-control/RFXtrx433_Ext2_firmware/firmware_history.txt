@@ -1,0 +1,365 @@
+Important notes:
+The Ext and Ext2 firmware will only operate in an RFXtrx433E and cannot be used in an RFXtrx433!
+Type1 and Type2 firmware will operate in the RFXtrx433 and RFXtrx433E.
+The preferred firmware for the RFXtrx433E is Ext or Ext2.
+Check chapter 2 in the RFXtrx User Guide for the list of supported protocols.
+
+You only have to flash the latest firmware version.
+The previous version is only present to enable you to go back in case of troubles.
+
+
+
+
+RFXtrx433, RFXtrx433E, RFXrec433 change history:
+============================================================
+FW release 433_1022 26-10-2017
+    Kerui gas and CO2 detectors supported
+    1byOne improved
+    Energenie transmit packets increased
+    Imagintronic/Opus improved
+    A-OK corrected
+
+FW release 433_1021 18-09-2017
+    new WS1200 detected
+    Blyss receive improved
+    BLYSS Temp/Hum sensor 630467 added in Ext
+    BlindsT1 improved (Type1/2)
+    BlindsT2 and BlindsT3 improved
+    Cartelectronic Linky added
+
+FW release 433_1020 09-06-2017
+    Temp/Hum sensor AOK2011/2026 added as Rubicson
+    Chuango keyfob added in Ext2
+    BlindsT3 A-OK AC114 unit code forced to 1
+    New version Banggood sensor supported in Ext firmware
+
+FW release 433_1019 03-05-2017
+    cartelectronics in Type2 and Ext2
+
+FW release 433_1018 02-05-2017
+    homeconfort in Ext
+
+FW release 433_1017 25-04-2017
+    RM174RF always battery full indicated
+    Chuango updated
+    BLYSS Temp/Hum sensor 630467 added in Type1 & Type2
+    BTHGN129 updated
+    Energenie improved
+    Imagintronix improved
+
+FW release 433_1016 28-02-2017
+    TH9 - F007TH temperature+humidity sensor added (Ext2)
+    TH9 - TFA 30.3208.02 added (Ext2)
+    cartelectronics removed from Ext2 (keep using 1015)
+    BBSB removed from Ext2
+    Kerui improved (Ext2)
+
+FW release 433_1015 03-02-2017
+    Kerui improved with Lighting4 + Rubicson or LaCrosse enabled
+
+FW release 433_1014 01-02-2017
+    Kerui improved
+    WSD10 added (Ext2)
+
+FW release 433_1013 13-01-2017
+    Kangtai, Cotech, SilverCrest, ... added (Ext2)
+    Kerui improved
+
+FW release 433_1012 14-12-2016
+    Screenline added (Ext2)
+    Kerui improved (Ext2 + X10 enabled)
+    Mertik G6R-H4T1 improved
+    MCZ check on valid command added
+
+FW release 433_1011 02-12-2016
+    MCZ pellet stove 3 fan model added
+
+FW release 433_1010 29-11-2016
+    Marquant 934134 added in Type2
+    ARC undecoded updated
+
+FW release 433_1009 04-11-2016
+    RFY corrected
+
+FW release 433_1008 27-10-2016
+    Mertik G6R-H4TD (DRU) receive corrected
+    SA33 smoke detector added (Type1,  Ext)
+    MCZ pellet stove added (Type2, Ext)
+
+FW release 433_1007 09-10-2016
+    Firmware code optimized
+    BTHGN129 corrected 
+    Lighting4 low pulse timing accepted
+    THN129 added
+    WS1700 battery empty indication removed
+    Philips SBC unit 9-16 added
+    RM174RF smoke detector added (Ext2 firmware)
+    Westinghouse fan control 7226640 added (Ext2 firmware)
+    TFA 30.3056 pool sensor added
+
+FW release 433_1006 08-08-2016
+    Motorlux added
+    Seav TXS4 added
+    Livolo updated
+    WS3500/4500 rain sensor corrected
+
+FW release 433_1005 23-05-2016
+    LightwaveRF corrected
+
+FW release 433_1004 17-05-2016
+    Livolo improved
+    AC corrected
+
+FW release 433_1003 14-05-2016
+    Cartelectronic added to Type2 firmware
+    Rubicson/IW008T/TX95 corrected
+    WS3500/WS4500 temperature corrected
+    MDRemote V108 added
+
+FW release 433_1002 06-05-2016
+    Cartelectronic TIC & Encoder added
+    BlindsT6 updated
+    ByronSX + Oregon enabled improved
+    Somfy improved
+    Mertik G6R-H4T1 improved
+    WS1200 improved
+    WS3500 corrected
+
+FW release 433_1001 18-02-2016
+    Firmware type Ext2 released
+    Firmware version restarted at 1 (combination with Type now)
+    Firmware Type displayed in response message.
+    IT transmit protocol PROmax, FA500S, FA500WD, FA500DSS added (RFXtrx433E Ext2)
+    Auriol Z31055B-TX sensor added (RFXtrx433E Ext2)
+    WS1200 battery low detected
+    Chuango, Eminent security sensors added:
+    - decoded as Lighting4 in Type1, Type2 and Ext
+    - decoded as X10 in Ext2
+
+FW release 433_95/195/251 06-02-2016
+    OWL CM180 ID improved
+    Maverick ET-733 added
+    Maverick ET-732 ID added (Type2 & Ext only)
+    Alecto WS1700/3500/4500 negative temp corrected
+    Viking 02813 added
+    WS1200 updated
+    ARC & Lighting4 can be enabled both (ARC/BBSB has priority)
+    Lighting4 improved
+    New PCR800 added
+    ASP blind motors added (Type1 & Type2 only)
+    Avantek added (Ext only)
+    HQ COCO-20 added (Ext only)
+
+FW release 433_94/194/250 24-12-2015
+    ARC improved with RSL enabled (Type1 only)
+    Rubicson pool sensor 49.019 added
+    Blyss improved for blinds module
+    Lucci Air added (ext only)
+    Inovalley S80 plant humidity sensor added (ext only)
+
+FW release 433_93/193/249 23-11-2015
+    Mertik G6R-H4T16 added
+    MDremote version 107 added
+    Legrand CAD radio added (Ext only)
+    Conrad RSL sensors improved (Type2 only)
+    UPM improved (Type1 only)
+    Cresta improved
+
+FW release 433_92/192/248 17-09-2015
+    Home Confort added
+    Lighting4 improved
+
+FW release 433_247 31-08-2015
+    ASA blinds added (Ext only)
+
+FW release 433_246 06-08-2015
+    Oregon MSR939 motion sensor updated, false packets eliminated (Ext only)
+    Revolt only available in Type2 (removed from Ext)
+
+FW release 433_91/191/245 24-07-2015
+    Conrad RSL updated for sensors (Type2 only)
+    Oregon MSR939 motion sensor added (Ext only)
+    WS1700 updated  (Ext only)
+    BlindsT6 also in Ext available
+    BlindsT6 Brel and ESMO added
+
+FW release 433_90/190/244 23-06-2015
+    Lighting4 reports real pulse length
+    Imagintronix/XT300 optimized
+
+FW release 433_89/189/243 01-06-2015
+    RFY updated for Somfy DC RTS Receiver Part Number 1870135
+    Alecto WS1700/WS4500 corrected
+    Transmitter output level reported (+10dBm)
+    RGB 432W added http://www.ebay.com/itm/191481664563 (maybe dx.com 227892??)
+
+FW release 433_88/188/242 05-05-2015
+    Oregon THR128/138 corrected
+    RFY - MY/Stop command changed. (Some position functions did not operate)
+
+FW release 433_87/187/241 02-05-2015
+    KD101 number of xmit packets increased
+    Mertik G6R_H4S added (transmit only)
+    Improved; WS1700/WS4500
+    Corrected Type2 firmware; Imagintronix/Opus with HW version 0
+    Corrected; WT0122 temperatures < 14C
+    Corrected; Transceiver type could be wrong after flash update
+
+FW release 433_86/186/240 19-03-2015
+    TFA water temp sensor 30.3160 added
+
+FW release 433_85/185/239 18-03-2015
+    Alecto WS4500 updated
+    Oregon THGR328N corrected
+    Sunpery,BTX added
+    Dolat DLM-1 blinds added
+    Mertik G6R_H4TD (DRU) added
+    OTIO improved
+
+FW release 433_238 05-03-2015
+    Save Settings corrected
+
+FW release 433_84/184/237 27-02-2015
+    SelectPlus changed (important: requires an update of the application)
+    Alecto WS4500 added
+    Envivo ENV-1348 chime added
+    DEA Systems receivers added
+    CM180 improved
+
+FW release 433_83/183/236 14-01-2015
+    CM180 instant power reported (IMPORTANT: check if the HA application is updated for this else you get wrong total power)
+    Viking sensors corrected
+    Imagintronix enable added
+
+FW release 433_182/235 06-01-2015
+    SelectPlus200689103 Black Chime added (Action NL)
+    SelectPlus200689101 RF corrected
+
+FW release 433_81/181/234 02-01-2015
+    smartwares improved
+    Chamberlain CS4330CN added
+    SelectPlus200689101 White Chime added (Action NL)
+    Meiantech and Oregon3.0 received if both enabled
+    Conrad RSL receive improved
+    Rubicson stektermometer (2nd version) high temp corrected
+    Eurodomest moved to Type2 firmware (ARC can be used instead)
+    Philips SBC moved to Type2 firmware
+    Media Mount moved to Type2 firmware
+    Ninja removed from Type1 firmware
+
+FW release 433_80/180/233 13-12-2014
+    Mertik G6R-H4T1 transmit improved
+    BlindsT0 & BlindsT1 transmit improved
+    BlindsT0 receive improved (180 only)
+    Byron SX receive improved
+    LWRF receive improved
+    Elro AB600P PIR added
+    XDOM TH10 added
+    Rubicson stektermometer corrected
+    Livolo on/off modules with unit nbr 1 to 10 added
+    Somfy Enable Sun+Wind & Disable Sun commands added  (233 only)
+    Smartwares radiator valve added (233 only)
+
+FW release 433_232 09-10-2014
+    Alecto WS1700 and compatibles added
+
+FW release 433_231 24-09-2014
+    Check if RFXtrx433E OK
+    RAEX removed from ext
+    Media Mount support in ext
+
+FW release 433_79/179/230 17-09-2014
+    RFY program command changed
+    Number of RFY remotes increased from 30 to 40
+    Byron MP001 transmit added
+    WT0122 pool thermometer added (maybe also Kjell 48019 Rubicson)
+    Eurodomest added
+    TRC02 receive improved
+    Viking temperature measurement extended
+
+FW release 433_78/178/229 25-07-2014
+    Aoke relay added
+
+FW release 433_77/177/228 17-07-2014
+    RFY Erase remote corrected
+    List RFY remotes added
+
+FW release 433_77/177/227 25-06-2014
+    Viking checksum added
+    Conrad RSL improved
+    BTHR968 forecast corrected
+    RTHN318 corrected
+    DM10 corrected
+    LightwaveRF Off corrected
+    Prego P-8426 sensor added
+    Somfy venetian commands added
+    Number of RFY remotes increased from 16 to 30
+    Kambrook, Rubicson and Viking supported in EXT firmware.
+
+FW release 433_76/176/226 29-05-2014
+    Imagintronix soil sensor added
+
+FW release 433_175/225 05-05-2014
+    RFY protocol added (E version only)
+    Type2 - Kambrook RF3672 added (Australia)
+    Internal changes
+
+FW release 433_74 19-04-2014
+    Visonic improved
+    Forest improved
+
+FW release 433_73 07-04-2014
+    Forest motors added
+
+FW release 433_72 31-03-2014
+    RTHN318 date/time added
+    UPM with temp only sensor decoded as TEMP6 sensor
+    Oregon3.0 with Byron SX or LWRF enabled improved
+    Energenie 5-gang 429.950 added
+    COCO GDR2-2000R transmit added
+    Atlantic tamper & battery low added
+    ARC with HomeEasy EU enabled improved
+    DC106, YOODA, Rohrmotor24 tubular motor added
+
+FW release 433_71    05-12-2013
+    BLYSS transmit improved
+    new version Rubicson stektermometer supported
+    AB400 house code I to P corrected
+    RGB controllers dx.com 130913 and 67412 added
+    Revolt only in Type2 firmware
+
+FW release 433_70    11-11-2013
+    Conrad RSL2 transmit improved
+    Byron SX receive improved
+    Maverick ET-732 added
+    Alecto SA30 added
+    Oregon EW109 added
+    CM180i corrected
+    Mertik Maxtrol G6R-H4T21-Z22 added
+    Revolt added
+
+FW release 433_69    23-10-2013
+    Siemens SF01 LF959RA50/LF259RB50/LF959RB50 transmit for extractor hood added
+    Livolo transmit added
+    TFA 30.3133 improved
+
+FW release 433_68    07-10-2013
+    Byron SX improved
+    Lighting5 LWRF Colour commands added
+    MDREMOTE LED dimmer added
+    Alecto WS1200 added
+    Byron SX Chime added
+    ELEC4 CM180i AMP corrected
+    ELEC3 CM180 battery indicator corrected
+    HomeEasy EU improved (but ARC/Lighting4 degraded with HE EU enabled!)
+    Impuls corrected
+    Ematronic AC114 improved
+    Viking/FineOffset improved
+
+FW release 433_67    7-6-2013
+    BlindsT0 transmit updated for battery motor.
+    BLINDST4 addressing changed
+    Transmit sequence number corrected
+    LightwaveRF ON decoded
+    ARC PIR improved
+    Conrad RSL2 added

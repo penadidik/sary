@@ -1,0 +1,329 @@
+/** Dashboard Js */
+var dashboard = {
+    message: false,
+    form: false,
+    params: {
+        div_cnt: 0,
+        index: 0,
+        key: '',
+    },
+    //url
+    url: {
+        api: '/restapi/v1/tso/rooms/',
+    },
+    //이벤트를 바인딩한다.
+    doInit: function () {
+        var p = this;
+
+        p.form = $('#dashboard-form');
+
+
+    },
+    doSelectFloor: function () {
+        var p = this;
+
+        if (p.form.attr('id') != 'dashboard-form') {
+            return false;
+        }
+
+        var floor = $('.floor-list li').first();
+
+        $('#dashboard-floor-toggle p').text(floor.text());
+        Controller.createRoomList(floor.find('a').attr('value'));
+    },
+    getRoomDetail: function (room) {
+
+        var cardArea = $('#dashboard-card-area');
+
+        cardArea.html('');
+        $.each(room, function (i, e) {
+
+            cardArea.appCardWidget({
+                title: e.room_name,
+                key: e.room_id,
+                url: dashboard.url.api,
+                params: {
+                    blind_info: e.blind_info
+                }
+            });
+
+        });
+    },
+    setBlindInfo: function (key, id, params) {
+        Controller.doInitModal();
+        $('#modal .modal-body').empty();
+
+        dashboard.setBlindCtrl();
+
+        dashboard.params.index = 0;
+        dashboard.params.key = key;
+
+        $('#modal .modal-dialog').addClass('modal-lg');
+        $('#modal-title').text('Blind Channels');
+
+        $('#modal .modal-body').css('padding', '0');
+
+        var box = $('<div class="bs_box"></div>');
+        var box_title = '<div class="box-title2"><div class="btn_area borb2"><div class="fl_l txt1">' + id + '</div>' +
+                        '       <div class="fl_r">' +
+                        '            <input type="checkbox" id="all-blind-check" value="" class="mr-1 mt-3">' +
+                        '            <span  class="txt2 mt32">Select All</span>' +
+                        '        </div>' +
+                        '    </div>' +
+                        '</div>';
+
+        var blind_box = $('<div class="blind_box"></div>');
+        var div_cnt = 0;
+        dashboard.params.div_cnt = 0;
+
+        if (params.length > 5) {
+            div_cnt = Math.floor(params.length / 5);
+            dashboard.params.div_cnt = div_cnt;
+        }
+
+        blind_box.appCardWidget({
+            key: id,
+            count: div_cnt,
+            obj: params,
+            mode: 'blind'
+        });
+
+        var blind_box_btn = '<div class="blind_btn_div">' +
+                            '   <button class="btn btn-dark show-blind point-cursor" type="button" value="prev" id="show-blind-prev"><i class="fa fa-arrow-left"></i> </button>' +
+						    '   <button class="btn btn-dark pull-right show-blind point-cursor" type="button" value="next" id="show-blind-next"><i class="fa fa-arrow-right"></i></button>' +
+                            '</div><div style="clear: both;"></div>';
+        $(blind_box).append(blind_box_btn);
+
+        $(box).append(box_title);
+        $('#modal .modal-body').append(box);
+        $('#modal .modal-body').append(blind_box);
+
+        if (div_cnt > 0) {
+            for (var k = 0; k <= div_cnt; k++) {
+                if (k > 0) {
+                    var id = '#blind_div_' + k;
+                    $(id).hide();
+                }
+            }
+
+            $('#show-blind-prev').hide();
+        } else {
+            $('.blind_btn_div').hide();
+        }
+
+        $('.show-blind').on("click", function () {
+            var flag = this.value;
+            var index = dashboard.params.index;
+            dashboard.showBlind(index, flag);
+        });
+
+        $('.blind_box img').click(dashboard.clickBlind);
+
+        $('#all-blind-check').on('change', function () {
+            dashboard.clickBlindAll(this.checked);
+        });
+
+    },
+    showBlind: function (index, flag) {
+        var div_cnt = dashboard.params.div_cnt;
+
+        if (flag == "next") {
+            var nextIndex = index + 1;
+
+            if (nextIndex < div_cnt) {
+                dashboard.params.index++;
+            }
+
+            var id = '#blind_div_' + index;
+            var nextId = '#blind_div_' + nextIndex;
+
+            if (nextIndex < div_cnt) {
+                $(id).hide();
+                $(nextId).show();
+
+                $('#show-blind-prev').show();
+            } else if (nextIndex == div_cnt) {
+                $(id).hide();
+                $(nextId).show();
+
+                $('#show-blind-next').hide();
+                $('#show-blind-prev').show();
+            }
+
+        } else if (flag == "prev") {
+            var prevIndex = index - 1;
+            var nextIndex = index + 1;
+
+            var id = '#blind_div_' + index;
+            var prevId = '#blind_div_' + prevIndex;
+            var nextId = '#blind_div_' + nextIndex;
+
+            $(id).show();
+            $(prevId).hide();
+            $(nextId).hide();
+
+            if (prevIndex < 0) {
+                $('#show-blind-prev').hide();
+                $('#show-blind-next').show();
+            } else {
+                $('#show-blind-prev').show();
+                $('#show-blind-next').show();
+            }
+
+            dashboard.params.index--;
+
+        }
+
+        if (dashboard.params.index < 0) {
+            dashboard.params.index = 0;
+        }
+    },
+    clickBlind: function () {
+        if ($(this).attr('class') == 'check_blind') {
+            dashboard.unCheckBlind(this);
+            dashboard.checkBlindAll();
+        } else {
+            dashboard.checkBlind(this);
+            dashboard.checkBlindAll();
+        }
+    },
+    clickBlindAll: function (checked) {
+        var img = $('.blind_box img');
+        if (checked) {
+            $.each(img, function () {
+                dashboard.checkBlind(this);
+            });
+        } else {
+            $.each(img, function () {
+                dashboard.unCheckBlind(this);
+            });
+        }
+    },
+    checkBlind: function (p) {
+        $(p).attr('src', '/images/blind/sm_btn_blind_selec_on.png');
+        $(p).addClass('check_blind');
+    },
+    unCheckBlind: function (p) {
+        var blind_cnt = $(p).attr('value');
+
+        if (blind_cnt > 8) {
+            blind_cnt = 8;
+        }
+
+        $(p).removeClass('check_blind');
+        $(p).attr('src', '/images/blind/sm_btn_blind_' + blind_cnt + '.png');
+    },
+    checkBlindAll: function () {
+        var img = $('.blind_box img');
+        var all = true;
+
+        $.each(img, function () {
+            if ($(this).attr('class') != "check_blind") {
+                all = false;
+            }
+        });
+
+        // console.log(all);
+
+        if (!all) {
+            $("#all-blind-check").prop("checked", false);
+        } else {
+            $("#all-blind-check").prop("checked", true);
+        }
+    },
+    setBlindCtrl: function () {
+        $('#modal .modal-footer').empty();
+        $('#modal .modal-footer').css({
+            'padding': '20px',
+            'background-color': ' #383838',
+            'text-align': 'center'
+        });
+
+        var div = $('<div class="blind-ctrl-btn"></div>');
+        var btn = '<button class="pull-center btn btn-outline-white btn-lg mr-2 mt-1 mb-1 blind-ctrl point-cursor" value="up" type="button"><img src="/images/common/sm_icon_up.png" alt="pause"></button>' +
+                  '<button class="pull-center btn btn-outline-white btn-lg mr-2 mt-1 mb-1 blind-ctrl point-cursor" value="stop"type="button"><img src="/images/common/sm_icon_pause.png" alt="pause"></button>' +
+                  '<button class="pull-center btn btn-outline-white btn-lg mr-2 mt-1 mb-1 blind-ctrl point-cursor" value="down" type="button"><img src="/images/common/sm_icon_down.png" alt="pause"></button>';
+                  
+        $(div).append(btn);
+        $('#modal .modal-footer').append(div);
+
+        $('.blind-ctrl').on("click", function () {
+            var key = dashboard.params.key;
+            var action = this.value;
+            dashboard.doControlBlind(key, action);
+        });
+    },
+    doControlBlind: function (key, action) {
+        var url = dashboard.url.api + key + "/control-blind";
+        var data = [];
+
+        // var obj = [];
+        // console.log(key, action);
+        var check_blind = $('.blind_box img.check_blind');
+
+        if (check_blind.length < 1) {
+            return false;
+        }
+
+
+        $.each(check_blind, function () {
+
+            var arr = {};
+            arr.ch_no = parseInt(this.id);
+            arr.direction = action;
+
+            data.push(arr);
+        });
+
+        data = JSON.stringify({
+            data: data
+        });
+        $.toast({
+            text: 'Send blind control message.',
+            showHideTransition: 'slide',
+            loader: false,
+            position: 'bottom-right',
+            //hideAfter: 2000,
+            icon: 'info'
+        });
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            contentType: 'application/json',
+            success: function (xml) {
+                var code = xml.code;
+                if (code == 200) {
+                    $.toast({
+                        heading: action.toUpperCase(),
+                        text: 'All blinds have worked successfully.',
+                        showHideTransition: 'slide',
+                        position: 'bottom-right',
+                        loader: false,
+                        icon: 'success'
+                    });
+                } else if (code != 403 && code != 401) {
+                    $.toast({
+                        heading: 'Bind control failed',
+                        text: 'Error Code: ' + code,
+                        showHideTransition: 'slide',
+                        hideAfter: 10 * 1000,
+                        position: 'bottom-right',
+                        loader: false,
+                        icon: 'error'
+                    });
+                } else {
+                    $('.modal').click();
+                }
+            },
+            error: function (request, status, error) {
+                console.log(error);
+            }
+        });
+    }
+}
+
+
+$(function () {
+    dashboard.doInit();
+});

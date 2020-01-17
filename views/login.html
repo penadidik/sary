@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ./common/header.html %>
+</head>
+
+<body class="loginimg">
+  <div class="container" style="margin-top:200px; padding:30px 0px 30px 0px; background: white">
+    <center><h1>Please login via Sofila System.</h1></center>
+  </div>
+
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header">Login</div>
+      <div class="card-body">
+        <form id="login-form" method="post">
+          <div class="form-group">
+            <label for="exampleInputEmail1">ID</label>
+            <input class="form-control" id="tso-smart-room-user-id" name="user_id" type="id">
+            <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input class="form-control" id="tso-smart-room-user-password" name="password" type="password" autocomplete="new-password">
+          </div> 
+          <div id="login-btn" class="btn btn-red2 btn-block point-cursor">Login</div>
+        </form>
+      </div>
+    </div>
+  </div> 
+
+  <!-- layer popup -->
+  <div id="app_message"></div>
+
+  <script src="/js/contents/login.js"></script>
+</body>
+
+</html>

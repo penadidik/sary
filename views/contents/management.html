@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<% include ../common/header.html %>
+		<link href="/stylesheets/management.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+	<!-- Navigation-->
+	<!-- Navigation Start -->
+	<% include ../common/navigation.html %>
+		<!-- Navigation End -->
+
+		<div class="content-wrapper">
+			<div class="container-fluid">
+				<!-- Breadcrumbs-->
+				<% include ../common/top-title.html %>
+					<form id="management-form">
+						<!-- floor selection -->
+						<div class="btn-group">
+							<button type="button" class="btn btn-outline-success dropdown-toggle floor-toggle point-cursor" id="management-floor-toggle"
+							 data-toggle="dropdown">
+								<p>Floor selection</p>
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu floor-list" id="management-floor-list" role="menu"></ul>
+						</div>
+
+						<div class="btn-group btn-right">
+							<button type="button" class="btn btn-red2 point-cursor" id="new-management-room">Add Room</button>
+						</div>
+
+						<div id="management-table"></div>
+					</form>
+
+					<div id="management-detail">
+						<% include ../contents/management_detail.html %>
+					</div>
+
+					<!-- Modal Start-->
+					<% include ../common/modal.html %>
+						<!-- /.content-wrapper-->
+						<!-- Footer Start -->
+						<% include ../common/footer.html %>
+							<!-- Footer End -->
+
+							<!-- Etc Start -->
+							<% include ../common/etc.html %>
+								<!-- Etc End -->
+			</div>
+
+			<script src="/js/contents/management.js"></script>
+</body>
+
+</html>

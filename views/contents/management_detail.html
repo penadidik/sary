@@ -1,0 +1,96 @@
+<form id="management-detail-form">
+  <!-- Input details-->
+  <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+  <div class="col-lg-4" id="management-card">
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fa fa-info-circle"></i> Input details</div>
+      <div class="form-group">
+        <label for="Name" class="col-xs-5 col-lg-5 control-label">Room identification</label>
+        <div class="col-xs-12 col-lg-12">
+          <input type="text" class="form-control" placeholder="Room identification" id="management-room-identification"
+            name="room_id" />
+        </div>
+      </div>
+      <div class="form-group mt10">
+        <label for="Name" class="col-xs-5 col-lg-5 control-label">Room name</label>
+        <div class="col-xs-12 col-lg-12">
+          <input type="text" class="form-control" placeholder="Room name" id="management-room-name" name="room_name" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Name" class="col-xs-5 col-lg-5 control-label">Floor</label>
+        <div class="col-xs-12 col-lg-12">
+          <input type="text" class="form-control" placeholder="ex) 3F" id="management-room-floor" name="floor_no" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Name" class="col-xs-5 col-lg-5 control-label">Descriptions</label>
+        <div class="col-xs-12 col-lg-12">
+          <textarea rows="5" class="form-control" id="management-room-descriptions" name="description"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="Name" class="col-xs-5 col-lg-5 control-label">Gateway</label>
+        <div class="inner-from-group">
+          <div class="form-group">
+            <label for="Name" class="col-xs-5 col-lg-5 control-label">Serial No</label>
+            <div class="col-xs-12 col-lg-12">
+              <input type="text" class="form-control" placeholder="Serial No" id="management-room-gateway-serial-no"
+                name="gateway_serial_no" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Name" class="col-xs-5 col-lg-5 control-label">IP Address</label>
+            <div class="col-xs-12 col-lg-12">
+              <input type="text" class="form-control" placeholder="IP Address" id="management-room-gateway-static-ip"
+                name="gateway_static_ip" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="Name" class="col-xs-5 col-lg-5 control-label">Sensor Device</label>
+        <div class="inner-from-group">
+          <div class="form-group">
+            <label for="Name" class="col-xs-5 col-lg-5 control-label">Serial No</label>
+            <div class="col-xs-12 col-lg-12">
+              <input type="text" class="form-control" placeholder="Serial No" id="management-room-sensor-serial-no"
+                name="sensor_serial_no" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Name" class="col-xs-5 col-lg-5 control-label">IP Address</label>
+            <div class="col-xs-12 col-lg-12">
+              <input type="text" class="form-control" placeholder="IP Address" id="management-room-sensor-static-ip"
+                name="sensor_static_ip" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="Name" class="col-xs-5 col-lg-5 control-label">Blind channels</label>
+        <div class="col-xs-12 col-lg-12">
+          <hr class="mt5">
+          <div id="management-room-blind-info"></div>
+          <button type="button" class="pull-center btn btn-outline-success mb10 point-cursor" id="managemnt-blind-add-btn"
+            a class="nav-link" data-toggle="modal" data-target="#modal">
+            <i class="fa fa-fw fa-plus "></i>
+          </button>
+        </div>
+      </div>
+
+
+      <div class="card-footer small text-muted" id="management-room-btn-area">
+        <button type="button" class="pull-right btn btn-red2 ml10 mb5 point-cursor" id="management-room-register" value="I">Add</button>
+        <button type="button" class="pull-right btn btn-secondary mb5 point-cursor" id="management-room-cencel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- -->
+  <script src="/js/contents/management_detail.js"></script>

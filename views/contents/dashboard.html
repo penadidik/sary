@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../common/header.html %>
+  <link href="/stylesheets/management.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="/vendor/jquery-plugins/jquery.dataTables.js"></script>
+  <!-- <script src="/vendor/jquery-plugins/dataTables.responsive.min.js"></script> -->
+  <script type="text/javascript" charset="utf8" src="/vendor/jquery-plugins/dataTables.rowsGroup.js"></script>
+  <style>
+    /* DataTables */
+
+    .table thead th {
+      font-weight: 700
+    }
+
+    /* border-bottom: 1px solid #f4f4f4 */
+
+
+    .table tbody i.fa {
+      position: relative;
+      bottom: 1.8px;
+      font-size: 10px;
+    }
+
+    .table td,
+    .table th {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    td:nth-child(1).highlight,
+    td:nth-child(2).highlight {
+      /* your stuff here */
+      cursor: pointer;
+      background-color: #f2f2f2;
+    }
+
+    td:nth-child(1),
+    td:nth-child(2) {
+      border-right: 1px solid #e9ecef;
+      background-color: #f9f9f9;
+    }
+
+    td span.co2,
+    td span.pm25 {
+      display: inline-block;
+      width: 50px;
+      text-align: center;
+    }
+
+    #room_status_table_left {
+      margin-right: 10px;
+    }
+
+    #room_status_table_right {
+      margin-left: 10px;
+      /* border-left: 1px solid #000; */
+    }
+
+    #room_status_table_right,
+    #room_status_table_left {
+      border-bottom: 1px solid #444;
+    }
+
+    .content-wrapper {
+      min-height: calc(100vh - 75px);
+    }
+
+  </style>
+</head>
+<!-- body에서 클래스 중에 sticky-footer 빼고 아래 footer 주석 처리 css content-wrapper추가 -->
+<!-- <body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top"> -->
+<body class="fixed-nav bg-dark sidenav-toggled" id="page-top">
+  <!-- Navigation Start -->
+  <% include ../common/navigation.html %>
+  <!-- Navigation End -->
+
+  <div class="content-wrapper" style="padding:10px;">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <!-- Breadcrumbs-->
+      <!-- <div id="top-title">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item" id="top-title-main">
+            <a href="/tso-console/dashboard"></a>
+          </li>
+          <li class="breadcrumb-item active" id="top-title-sub"></li>
+        </ol>
+        <h1 id="top-title-h1"></h1>
+        <hr>
+        <p></p>
+      </div> -->
+      <div id="management-form" style="padding-bottom:50px;width:100%">
+        <!-- floor selection -->
+        <p align="right" style="font-size: 0.9rem;margin-bottom: 10px;">
+          Temp. 20℃ - 26℃ = Cool/Normal
+          <i class="fa fa-square" aria-hidden="true" style="color:#000000"></i>  &nbsp;&nbsp;
+          Temp. 26.1℃ - ∞℃ = Hot/Warning
+          <i class="fa fa-square" aria-hidden="true" style="color:#e91e24"></i>  &nbsp;&nbsp;
+        </p>
+        <div style="width: 50%; float: left;">
+          <table id="room_status_table_left" class="table mdl-data-table" style="width:100%">
+            <thead>
+              <tr>
+                <th width="17%"><i class="fa "></i><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp;&nbsp;Floor</th>
+                <th width="17%">Name</th>
+                <th width="16%"><i class="fa fa-thermometer-full" aria-hidden="true"></i>&nbsp;&nbsp;Temp. (℃)</th>
+                <th width="16%"><i class="fa fa-tint" aria-hidden="true"></i>&nbsp;&nbsp;Hum. (%)</th>
+                <th width="17%"><i class="fa fa-cloud" aria-hidden="true"></i>&nbsp;&nbsp;CO2</th>
+                <th width="17%"><i class="fa fa-cloud" aria-hidden="true"></i>&nbsp;&nbsp;PM 2.5</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div style="width: 50%; float: left;">
+          <table id="room_status_table_right" class="table mdl-data-table" style="width:100%">
+            <thead>
+              <tr>
+                <th width="17%"><i class="fa "></i><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp;&nbsp;Floor</th>
+                <th width="17%">Name</th>
+                <th width="16%"><i class="fa fa-thermometer-full" aria-hidden="true"></i>&nbsp;&nbsp;Temp. (℃)</th>
+                <th width="16%"><i class="fa fa-tint" aria-hidden="true"></i>&nbsp;&nbsp;Hum. (%)</th>
+                <th width="17%"><i class="fa fa-cloud" aria-hidden="true"></i>&nbsp;&nbsp;CO2</th>
+                <th width="17%"><i class="fa fa-cloud" aria-hidden="true"></i>&nbsp;&nbsp;PM 2.5</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <!-- Modal Start-->
+    <% include ../common/modal.html %>
+    <!-- Modal End -->
+    <!-- Footer Start -->
+    <!-- <% include ../common/footer.html %> -->
+    <!-- Footer End -->
+
+    <!-- Etc Start -->
+    <% include ../common/etc.html %>
+    <!-- Etc End -->
+  </div>
+
+  <script src="/js/contents/dashboard_left.js"></script>
+  <script src="/js/contents/dashboard_right.js"></script>
+</body>
+
+</html>

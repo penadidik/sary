@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../common/header.html %>
+  <link href="/stylesheets/dashboard.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation Start -->
+  <% include ../common/navigation.html %>
+    <!-- Navigation End -->
+
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <% include ../common/top-title.html %>
+
+          <div id="dashborad-form">
+            <!-- floor selection -->
+            <div class="btn-group"> 
+              <button type="button" class="btn btn-outline-success dropdown-toggle floor-toggle point-cursor" data-toggle="dropdown" id="dashboard-floor-toggle"> <p>Floor selection</p>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu floor-list" id="dashboard-floor-list" role="menu"></ul> 
+            </div>
+
+            <p></p>
+
+            <form id="dashboard-form">
+                <div id="dashboard-card-area" class="row">
+                  
+                </div>
+            </form>
+
+          </div>
+      </div>
+      <!-- /.container-fluid-->
+      <!-- /.content-wrapper-->
+      <!-- Modal Start-->
+			<% include ../common/modal.html %>
+      <!-- Modal End -->
+      <!-- Footer Start -->
+      <% include ../common/footer.html %>
+      <!-- Footer End -->
+
+      <!-- Etc Start -->
+      <% include ../common/etc.html %>
+      <!-- Etc End -->
+    </div>
+
+    <script src="/js/contents/roomcontrol.js"></script>
+</body>
+
+</html>

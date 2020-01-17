@@ -1,0 +1,6 @@
+.basic-table {border-top:2px solid #313745; margin-bottom: 30px;clear:both;width:100%;}
+.basic-table td{border: 1px solid #e3e3e3;padding:10px;}
+.basic-table th{border: 1px solid #e3e3e3; padding:10px;font-weight: 600;text-align: center;}
+
+.red-table td{border:none;border-bottom:1px solid #e3e3e3;font-size:.8em;cursor: pointer;}
+.red-table th{border:none;border-bottom:2px solid #e91e24;font-size:.9em;}

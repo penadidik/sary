@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<% include ../common/header.html %>
+	<link href="/stylesheets/management.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8" src="/vendor/jquery-plugins/jquery.dataTables.js"></script>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+	<!-- Navigation-->
+	<!-- Navigation Start -->
+	<% include ../common/navigation.html %>
+	<!-- Navigation End -->
+
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<!-- Breadcrumbs-->
+			<% include ../common/top-title.html %>
+			<form id="management-form">
+				<input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+				<!-- floor selection -->
+				<!-- <div class="btn-group">
+							<button type="button" class="btn btn-outline-success dropdown-toggle floor-toggle point-cursor" id="management-floor-toggle"
+							 data-toggle="dropdown">
+								<p>Floor selection</p>
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu floor-list" id="management-floor-list" role="menu"></ul>
+						</div> -->
+
+				<div class="btn-group btn-right" style="padding-bottom:15px">
+					<button type="button" class="btn btn-red2 point-cursor" id="add-new-admin" data-toggle="modal" data-target="#modal">Add
+						User</button>
+				</div>
+				<table id="table_id" class="display" style="width:100%">
+					<thead>
+						<tr>
+							<th>Admin ID</th>
+							<th>Room ID</th>							
+						</tr>
+					</thead>
+				</table>
+				<div id="admin-table"></div>
+			</form>
+
+			<!-- Modal Start-->
+			<% include ../common/modal.html %>
+			<!-- /.content-wrapper-->
+			<!-- Footer Start -->
+			<% include ../common/footer.html %>
+			<!-- Footer End -->
+
+			<!-- Etc Start -->
+			<% include ../common/etc.html %>
+			<!-- Etc End -->
+		</div>
+		<script src="/js/contents/administrator.js"></script>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Log out</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Are you sure you want to logout?</div>
+            <div class="modal-footer">
+                <div id="logout-btn" class="btn btn-red2">OK</div>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- layer popup -->
+<div id="app_message"></div>
+
+<script src="/js/sb-admin.min.js"></script>
+
+<!-- Toggle between fixed and static navbar-->
+<script>
+    $('#toggleNavPosition').click(function () {
+        $('body').toggleClass('fixed-nav');
+        $('nav').toggleClass('fixed-top static-top');
+    });
+
+</script>
+<!-- Toggle between dark and light navbar-->
+<script>
+    $('#toggleNavColor').click(function () {
+        $('nav').toggleClass('navbar-dark ');
+        $('nav').toggleClass('bg-dark ');
+        $('body').toggleClass('bg-dark');
+    });
+
+</script>

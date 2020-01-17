@@ -1,0 +1,216 @@
+.box .box-btn{min-width:222px; text-align: center;}
+.box .box-btn div{ margin: 0 10px; }
+/* .box .box-btn div:hover{text-shadow: 2px 2px 5px #e91e24;} */
+/* .box .box-btn div:focus{text-shadow: 2px 2px 5px #e91e24;}  */
+
+.box .box-btn div{
+    border: 1px #f2f2f2 solid
+}
+.box .box-btn div:hover{ 
+    color:#ed767b;
+    cursor: pointer;    
+    border: 1px #ed767b solid
+}
+ 
+
+.blind-img img{
+    margin: .2em; 
+}
+
+.blind_box,
+.light_box,
+.temperature_box{ 
+    padding:15px; 
+    background: #B3B3B3;
+    margin:0 auto;
+}
+
+ 
+.light_box,
+.temperature_box{
+    height: 208px;
+    text-align: center;
+}
+
+.temperature_box > .temp-text{
+    height:5.2em;
+}
+ 
+.temperature_box > .temp-text > p{
+    display: inline-block;
+    font-size:2.3em; 
+    line-height: 2.3em;
+}
+ 
+.temperature_box > .up-temp-div > .up-temp,
+.temperature_box > .down-temp-div > .down-temp{
+    width: 70px;
+    height: 50px;
+    font-size: 2.5em;
+    padding: 0;
+    margin: 0;
+} 
+
+.temperature_box > .down-temp-div > .down-temp > i{
+    position: relative;
+    bottom: .4em;
+}
+
+.light_box > .light-on ,
+.light_box > .light-off ,
+.light_box > .light-presentation{ 
+    width:130px;
+    height: 119px;
+    display: inline-block;
+    margin-right:1em;
+    margin-top:1.5em;
+    cursor: pointer;
+    border:none;
+}
+
+.light_box > .light-on:last-child ,
+.light_box > .light-off:last-child ,
+.light_box > .light-presentation:last-child{ 
+    margin-right:0;
+}
+
+.light_box > .light-on{
+   background: url(../images/common/sm_btn_light_01_la_off.png);
+}
+
+.light_box > .light-on:focus, 
+.light_box > .light-on:active,
+.light_box > .light-on.active{
+    background: url(../images/common/sm_btn_light_01_la_on.png);
+    outline:0;
+}
+
+.light_box > .light-off{
+    background: url(../images/common/sm_btn_light_02_la_off.png);
+ }
+
+ 
+.light_box > .light-off:focus, 
+.light_box > .light-off:active,
+.light_box > .light-off.active{
+    background: url(../images/common/sm_btn_light_02_la_on.png);
+    outline:0;
+}
+
+ .light_box > .light-presentation{
+    background: url(../images/common/sm_btn_light_03_la_off.png);
+ }
+
+
+ .light_box > .light-presentation:focus,  
+ .light_box > .light-presentation:active, 
+ .light_box > .light-presentation.active{
+     background: url(../images/common/sm_btn_light_03_la_on.png);
+     outline:0;
+ }
+
+.blind_box img{
+    margin-right:.5em;
+    margin-bottom:.2em;
+}
+
+.blind_btn_div{
+    margin-top:15px; 
+    text-align: left;
+}
+
+.blind-ctrl-btn{
+    width:100%;
+} 
+
+.environment-status{
+    text-align: left;
+    font-size: .7rem;
+    display: block;
+    position: absolute;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.environment-status img{
+    width: 10px;
+}
+
+ 
+.card > .box > .content > .row{ 
+    margin: 1em 0 1em 0;
+    color: #fff;
+    text-align: center;
+    padding: 0 29px;
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
+    /* Styles */
+    .card > .box > .content > .row{ 
+        padding: 0 19px;
+    }
+}
+
+.card > .box > .content > .row > .box-col{ 
+    padding:0;
+}
+
+ 
+
+.card > .box > .content > .row > .box-col > .env-div > .env-cel{
+    display: inline-block; 
+    width:116px;
+    max-width:116px;
+    height: 112px;
+    max-height: 112px;
+    margin: 0 4px 4px 0px;
+    padding:0;
+    background:url(../images/common/sm_img_db_bg.png);
+    text-align: center;
+}
+
+.card > .box > .content > .row > .box-col > .env-div > .env-cel:first-child{
+    margin-right:4px;
+}
+
+.card > .box > .content > .row > .box-col > .env-div > .env-cel > img{
+    margin-top: 1em;
+}
+
+.card > .box > .content > .row > .box-col > .env-btn{  
+    width:80px;
+    max-width: 80px;
+    height: 73px;
+    max-height: 73px;
+    margin-bottom: 4px;
+    cursor: pointer;
+} 
+
+.card > .box > .content > .row > .box-col > .env-btn:last-child{ 
+    margin-bottom: 0px;
+}
+
+.card > .box > .content > .row > .box-col > .light-off{
+    background:url(../images/common/sm_btn_light_off.png);
+}
+
+.card > .box > .content > .row > .box-col > .light-on{
+    background:url(../images/common/sm_btn_light_on.png);
+}
+
+.card > .box > .content > .row > .box-col > .light-presentation{
+    background:url(../images/common/sm_btn_pre_on.png);
+}
+
+.card > .box > .content > .row > .box-col > .temperature{
+    background:url(../images/common/sm_btn_tem_set.png);
+}
+
+.card > .box > .content > .row > .box-col > .blind{
+    background:url(../images/common/sm_btn_blind_set.png);
+}
+
+.card > .box > .content > .row > .box-col > .blind-none{
+    background:url(../images/common/sm_btn_blind_set_none.png);
+    cursor: auto;
+}

@@ -1,0 +1,51 @@
+input.input-file{
+    position: fixed;
+    top:0;
+    left:0;
+    opacity: 0;
+    width:150px;
+}
+
+
+.input-file-text:disabled, .input-file-text[readonly]{
+    background-color: #fff;
+} 
+.dropdown-toggle p{
+    display: inline-block; 
+    margin: 0; 
+    padding: 0;
+    min-width:114px;
+    text-align: left;
+}
+
+.btn-right{
+    float: right;
+}
+
+.c{text-align: center;}
+.l{text-align: left;}
+.r{text-align: right;}
+
+.floor, .room{
+    display: inline-block;
+    width:100%;
+}
+
+.point-cursor, button, .btn{
+    cursor: pointer;
+}
+
+
+.card.mb-3 {
+    min-width: 20em;
+}
+
+.no-pointer{
+    cursor:default;
+    color: darkgray;
+}
+
+/*date picker height*/
+.ui-datepicker {
+    top : 100px !important;
+}

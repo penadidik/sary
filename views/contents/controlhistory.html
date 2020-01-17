@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../common/header.html %>
+    <link href="/stylesheets/controlhistory.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+    <!-- Navigation Start -->
+    <% include ../common/navigation.html %>
+    <!-- Navigation End -->
+
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <% include ../common/top-title.html %>
+            <p></p>
+            <hr>
+            <!-- Input details-->
+            <!-- Table-->
+            <div class="col-lg-10">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-history"></i> Control history</div>
+                    <div class="card-body">
+                        <form id="search-form" role="form" class="form-inline">
+                            <!-- <div class="form-group">                                                                                      
+                                <label for="Name" class="ml-2 mb-2">Room : </label>                                        
+                            </div> -->
+                            <div class="form-group">
+                                <label for="Name" class="ml-2 mb-2">Room : </label> 
+                                <!-- floor selection -->
+                                <div class="ml-2 mb-2 ">
+                                    <button id="floor-select-btn" type="button" class="btn btn-outline-success dropdown-toggle floor-toggle point-cursor" data-toggle="dropdown"> <p>Floor selection</p>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul id="controlhistory-floor-list" class="dropdown-menu floor-list" role="menu"></ul>
+                                </div>
+                                    <!-- room selection -->
+                                <div class="ml-2 mb-2 ">
+                                    <button id="room-select-btn" type="button" class="btn btn-outline-success dropdown-toggle room-toggle point-cursor" data-toggle="dropdown"> <p>Room selection</p
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul id="controlhistory-room-list" class="dropdown-menu room-list" role="menu"></ul>
+                                </div>                                      
+                                <input id="room-id-input" type="text" class="form-control ml-2 mb-2" placeholder="No room selected" readonly>
+                            </div>
+                            <!-- <div class="form-group">                                                                                                                              
+                                                                        
+                            </div> -->
+                            <div class="form-group">
+                                <label for="Name" class="ml-2 mb-2">User ID : </label>
+                                <input id="user-id-checkbox" name="user_id_check" type="checkbox" class="ml-2 mb-2">
+                                <input id="user-id-input" name="user_id" type="text" class="form-control ml-2 mb-2" placeholder="User ID">
+                            </div>
+                            <div class="form-group">
+                                <label for="Name" class="ml-2 mb-2">Search period: </label>
+                                <input id="start-date-input" name="start_date" type="text" class="date-input form-control ml-2 mb-2" placeholder="2017.12.20" readonly>
+                                <button id="start-date-btn" type="button" class="btn btn-gray btn-pull-right ml-2 mb-2 point-cursor">
+                                    <i class="fa fa-fw fa-calendar"></i>
+                                </button>
+                                <span class="ml-2">~</span>                            
+                                <input id="end-date-input" name="end_date" type="text" class="date-input form-control ml-2 mb-2" placeholder="2017.12.27" readonly>
+                                <button id="end-date-btn" type="button" class="btn btn-gray btn-pull-right ml-2 mb-2 point-cursor">
+                                    <i class="fa fa-fw fa-calendar"></i>
+                                </button>
+                            </div>
+                            <div class="form-group al-r">
+                                <select id="page-size-select" name="page_size"class="btn btn-outline-success dropdown-toggle ml-2 mb-2 point-cursor">                                                                        
+                                    <option>10</option>
+                                    <option>25</option>
+                                    <option>50</option>
+                                </select> 
+                                <button id="search-btn" type="button" class="btn btn-red2 btn-pull-right ml10 mb-2 point-cursor">
+                                    <i class="fa fa-fw fa-search"></i> Search</button>
+                            </div>
+                        </form>
+                        <p></p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">No.</th>
+                                        <th class="text-center">Room ID</th>
+                                        <th class="text-center">User ID</th>
+                                        <th class="text-center">Control massage</th>
+                                        <th class="text-center">Controlled date</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="list-table-body">
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.pagination-->
+                        <div class="text-center">
+                            <ul id='pagination-ul' class="pagination pagination-lg">                                        
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted">
+                        <strong>Total <span id='total-span'>0</span> items</strong> Updated. (<span id="updated-time-span"></span>)</div>
+                </div>
+            </div>
+            <!-- Blank div to give the page height to preview the fixed vs. static navbar-->
+            <div style="height: 1000px;"></div>
+        </div>
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>COPYRIGHT(C) 2017 ALL RIGHTS RESERVED.</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-red2" href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Start-->
+        <% include ../common/modal.html %>
+            <!-- Modal End -->
+            <!-- /.content-wrapper-->
+            <!-- Footer Start -->
+            <% include ../common/footer.html %>
+                <!-- Footer End -->
+
+                <!-- Etc Start -->
+                <% include ../common/etc.html %>
+                    <!-- Etc End -->
+    </div>
+
+    <script src="/js/contents/controlhistory.js"></script>
+</body>
+
+</html>

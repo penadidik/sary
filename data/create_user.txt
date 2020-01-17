@@ -1,0 +1,6 @@
+# mysql -h 127.0.0.1 -u root -p
+create database csitsodb;
+create user 'csitsodb'@'%' identified by 'csitsodb';
+grant all privileges on *.* to 'csitsodb'@'%';
+flush privileges ;
+

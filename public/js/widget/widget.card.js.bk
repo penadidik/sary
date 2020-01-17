@@ -1,0 +1,218 @@
+(function ($) {
+
+    $.fn.appCardWidget = function (args) {
+
+        var options = $.extend(true, {
+
+            url: '',
+            title: '',
+            key: false,
+            count: 0,
+            initial: false,
+            initialData: false,
+            params: {},
+            obj: {},
+            emptyText: '',
+            mode: 'dashboard'
+
+        }, args);
+
+        //현재객체
+        var thisWgt = this;
+        var thisElm = $(this);
+        var thisMode = thisElm.data("mode");
+
+        if (thisMode)
+            options.mode = thisMode;
+
+        this.loadSensingData = function (key, id) {
+
+            $.ajax({
+                url: options.url + key + "/sensing-data",
+                dataType: 'json',
+                type: 'GET',
+                success: function (xml) {
+
+                    if (!xml)
+                        return;
+                    thisWgt.appendSensingData(xml.data, id);
+                },
+                error: function (e) {
+                    //console.log(e);
+                }
+            });
+        }
+
+        this.appendSensingData = function (sensing, id) {
+
+            if (jutils.empty(sensing)) {
+                sensing = {};
+
+                sensing.co2 = '-';
+                sensing.pm25 = '-';
+            }
+
+            var el = thisElm;
+            var mode = options.mode;
+
+            var environment = $('<div class="box-environment" style="text-align:center;"></div>');
+            var environment_ul = $('<ul class="listStyle3"></ul>');
+
+            var co2, pm25;
+
+            co2 = Math.ceil(sensing.co2);
+            pm25 = Math.ceil(sensing.pm25);
+
+            var co2_msg, pm25_msg;
+            var good, moderate, unhealthy;
+
+            good = '<div class="environment-status"><img src="/images/common/cs_icon_good.png"/> Good</div>';
+            moderate = '<div class="environment-status"><img src="/images/common/cs_icon_moderate.png"/> Moderate</div>';
+            unhealthy = '<div class="environment-status"><img src="/images/common/cs_icon_unhealthy.png"/> Unhealthy</div>';
+
+            if (co2 < 701) {
+                co2_msg = good;
+            } else if (co2 > 700 && co2 < 2001) {
+                co2_msg = moderate;
+            } else {
+                co2_msg = unhealthy;
+            }
+
+            if (pm25 < 16) {
+                pm25_msg = good;
+            } else if (pm25 > 15 && pm25 < 51) {
+                pm25_msg = moderate;
+            } else {
+                pm25_msg = unhealthy;
+            }
+
+            environment_ul.append(' <li><span>' + co2_msg + '<img src="/images/common/sm_icon_co2.png" alt="co2"><p class="txt1">' + co2 + '</p></span></li>');
+            environment_ul.append(' <li><span>' + pm25_msg + '<img src="/images/common/sm_icon_o2.png" alt="o2"><p class="txt1">' + pm25 + '</p></span></li>');
+
+            environment.append(environment_ul);
+
+            var findId = '#box-environment-' + id;
+
+            el = thisElm.find(findId.replace(/\./g, '\\.'));
+            el.append(environment);
+        }
+
+        this.appendBlindInfo = function (params, id) {
+            var el = thisElm;
+            var blindInfo = params.blind_info;
+            var findId = '#box-footer-' + id;
+            el = el.find(findId.replace(/\./g, '\\.'));
+
+            var chn = 0,
+                blind = 0;
+
+            $.each(blindInfo, function (i, e) {
+                chn++;
+                blind += parseInt(e.blind_cnt);
+            });
+
+            var div;
+            if (blind != 0) {
+                div = '<div class="btn btn-red3 ctrl-btn point-cursor"  id="' + id + '"  data-toggle="modal"  data-target="#modal" style="min-width:18em;">';
+                div += 'Channels [ ' + chn + ' ] / Blinds [ ' + blind + ' ] ';
+                div += '<i class="fa fa-cog fa-lg"></i>';
+                div += '</div>';
+            } else {
+                div = '<div class="btn no-pointer" style="min-width:18em;">No Blinds</div>';
+            }
+
+
+            el.append(div);
+
+        }
+
+        this.appendBlindBox = function (blind_box_div, arr, cnt) {
+            var img = '';
+
+            $.each(arr, function (k, e) {
+                if (e.blind_cnt > 8) {
+                    img += '<img class="" src="/images/blind/sm_btn_blind_8.png" id="' + e.ch_no + '" value="' + e.blind_cnt + '" alt="blind" style="cursor:pointer;"/>';
+                } else {
+                    img += '<img class="" src="/images/blind/sm_btn_blind_' + e.blind_cnt + '.png"  id="' + e.ch_no + '"  value="' + e.blind_cnt + '" alt="blind" style="cursor:pointer;"/>';
+                }
+
+            });
+
+            var div = $('<div style="padding:0 0 0 1em;"></div>');
+
+            $(div).append(img);
+            $(blind_box_div).append(div);
+
+            thisElm.append(blind_box_div);
+        }
+        this.create = function () {
+            var id = options.key;
+            var row = $('<div class="card-box-media mb-3"></div>');
+
+            if (options.mode.toLowerCase() == "dashboard") {
+                var card = $('<div class="card text-white bg-dark o-hidden h-100"></div>');
+                var card_box = $('<div class="box box-info"></div>');
+
+                var box_header = '<div class="pull-right box-tools"></div>';
+                var box_body = $('<div class="box-body"></div>');
+
+                var box_body_title = '<div><p><h3 class="box-title">' + options.title + '</h3></p></div>';
+                var box_body_environment = $('<div class="box-environment" id="box-environment-' + id + '"></div>');
+
+                var box_footer = $('<div class="box-footer clearfix" id="box-footer-' + id + '"></div>');
+
+                box_body.append(box_body_title);
+                box_body.append(box_body_environment);
+
+                card_box.append(box_header);
+                card_box.append(box_body);
+                card_box.append(box_footer);
+
+                card.append(card_box);
+                row.append(card);
+
+                thisElm.append(row);
+
+                thisWgt.loadSensingData(options.key, id);
+                thisWgt.appendBlindInfo(options.params, id);
+
+                var ctrlBtnClickFn = function () {
+                    var btn = $(this).find('div.ctrl-btn');
+                    var id = btn.attr('id');
+                    var obj = options.params.blind_info;
+                    var key = options.key;
+
+                    dashboard.setBlindInfo(key, id, obj);
+                }
+
+                $(box_footer).click(ctrlBtnClickFn);
+
+            } else if (options.mode.toLowerCase() == "blind") {
+                var newArr = [];
+                var blind_box_div;
+                if (options.count > 0) {
+                    newArr = options.obj.division(5);
+
+                    for (var i = 0; i <= options.count; i++) {
+                        blind_box_div = $('<div id="blind_div_' + i + '" value="' + i + '" style="text-align:center"></div>');
+                        thisWgt.appendBlindBox(blind_box_div, newArr[i], options.count);
+                    }
+
+                } else {
+                    newArr = options.obj;
+
+                    blind_box_div = $('<div id="blind_div" style="text-align:center"></div>');
+                    thisWgt.appendBlindBox(blind_box_div, newArr, options.count);
+
+                }
+
+            }
+        };
+
+        this.create();
+
+        return this;
+
+    };
+
+}(jQuery));
